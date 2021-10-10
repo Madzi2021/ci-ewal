@@ -1,4 +1,4 @@
-<div class="sidebar">
+<div class="menu-samping">
     <div class="logo-content">
         <div class="logo">
             <span class="material-icons">flight_takeoff</span>
@@ -6,9 +6,9 @@
                 eWal
             </div>
         </div>
-        <span class="material-icons" id="btn">reorder</span>
+        <span class="material-icons" id="btn">navigate_next</span>
     </div>
-    <ul class="nav-list">
+    <ul class="daftar-menu">
         <li>
             <a href="#">
                 <span class="material-icons">dashboard</span>
@@ -20,7 +20,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/pengeluaran">
                 <span class="material-icons">shopping_cart</span>
                 <span class="links-name">
                     Pengeluaran
@@ -30,7 +30,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/pendapatan">
                 <span class="material-icons">account_balance_wallet</span>
                 <span class="links-name">
                     Pendapatan
@@ -40,7 +40,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/transfer">
                 <span class="material-icons">swap_horiz</span>
                 <span class="links-name">
                     Transfer Asset
@@ -50,7 +50,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/asset">
                 <span class="material-icons">monetization_on</span>
                 <span class="links-name">
                     Assets
@@ -60,7 +60,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/hutang">
                 <span class="material-icons">receipt</span>
                 <span class="links-name">
                     Hutang
@@ -70,7 +70,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/kartuasset">
                 <span class="material-icons">style</span>
                 <span class="links-name">
                     Kartu Asset

@@ -2,10 +2,10 @@
 
 namespace App\Controllers;
 
-class Home extends BaseController
+class Asset extends BaseController
 {
     public function index()
     {
-        echo view('home/content');
+        echo view('asset/content');
     }
 }

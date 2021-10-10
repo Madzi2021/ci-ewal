@@ -10,24 +10,29 @@ body {
   min-height: 100vh;
   width: 100%;
   overflow: hidden;
+  color: #11101d;
 }
 
-.sidebar {
+.daftar-menu {
+  padding: 0;
+}
+
+.menu-samping {
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  width: 78px;
+  width: 83px;
   background: #11101d;
   padding: 6px 14px;
   transition: all 0.5s ease;
 }
 
-.sidebar.active {
+.menu-samping.active {
   width: 290px;
 }
 
-.sidebar .logo-content .logo {
+.menu-samping .logo-content .logo {
   color: #fff;
   display: flex;
   height: 50px;
@@ -38,7 +43,7 @@ body {
   transition: all 0.5s ease;
 }
 
-.sidebar.active .logo-content .logo {
+.menu-samping.active .logo-content .logo {
   opacity: 1;
   pointer-events: none;
 }
@@ -53,7 +58,7 @@ body {
   margin-left: 10px;
 }
 
-.sidebar #btn {
+.menu-samping #btn {
   position: absolute;
   color: #fff;
   left: 50%;
@@ -66,15 +71,21 @@ body {
   transform: translateX(-50%);
 }
 
-.sidebar.active #btn {
-  left: 90%;
+.menu-samping #btn:hover {
+  color: #11101d;
+  background: #fff;
 }
 
-.sidebar ul {
+.menu-samping.active #btn {
+  left: 80%;
+  transform: rotate(180deg);
+}
+
+.menu-samping ul {
   margin-top: 20px;
 }
 
-.sidebar ul li {
+.menu-samping ul li {
   position: relative;
   height: 50px;
   width: 100%;
@@ -83,9 +94,9 @@ body {
   line-height: 50px;
 }
 
-.sidebar ul li .tooltip {
+.menu-samping ul li .tooltip {
   position: absolute;
-  left: 122px;
+  left: 127px;
   top: 0;
   transform: translate(-50%, -50%);
   border-radius: 5px;
@@ -101,16 +112,16 @@ body {
   display: block;
 }
 
-.sidebar.active ul li .tooltip {
+.menu-samping.active ul li .tooltip {
   display: none;
 }
-.sidebar ul li:hover .tooltip {
+.menu-samping ul li:hover .tooltip {
   transition: all 0.5s ease;
   opacity: 1;
   top: 50%;
 }
 
-.sidebar ul li a {
+.menu-samping ul li a {
   color: #fff;
   display: flex;
   align-items: center;
@@ -119,30 +130,30 @@ body {
   white-space: nowrap;
 }
 
-.sidebar ul li a:hover {
+.menu-samping ul li a:hover {
   color: #11101d;
   background: #fff;
 }
 
-.sidebar ul li a span {
+.menu-samping ul li a span {
   height: 50px;
   min-width: 50px;
   line-height: 50px;
   text-align: center;
 }
 
-.sidebar .links-name {
+.menu-samping .links-name {
   opacity: 0;
   pointer-events: none;
   transition: all 0.5s ease;
 }
 
-.sidebar.active .links-name {
+.menu-samping.active .links-name {
   opacity: 1;
   pointer-events: none;
 }
 
-.sidebar .profile-content {
+.menu-samping .profile-content {
   position: absolute;
   color: #fff;
   bottom: 0;
@@ -150,7 +161,7 @@ body {
   width: 100%;
 }
 
-.sidebar .profile-content .profile {
+.menu-samping .profile-content .profile {
   position: relative;
   padding: 10px 6px;
   height: 60px;
@@ -165,7 +176,7 @@ body {
   white-space: nowrap;
 }
 
-.sidebar.active .profile .profile-details {
+.menu-samping.active .profile .profile-details {
   opacity: 1;
   pointer-events: auto;
 }
@@ -200,19 +211,24 @@ body {
   text-align: center;
 }
 
-.sidebar.active .profile #log-out {
+.profile #log-out:hover {
+  color: #11101d;
+  background: #fff;
+}
+
+.menu-samping.active .profile #log-out {
   left: 88%;
 }
 
 .home-content {
   position: absolute;
   height: 100%;
-  width: calc(100% - 88px);
-  left: 88px;
+  width: calc(100% - 93px);
+  left: 93px;
   transition: all 0.5s ease;
 }
 
-.sidebar.active ~ .home-content {
+.menu-samping.active ~ .home-content {
   width: calc(100% - 300px);
   left: 300px;
 }
