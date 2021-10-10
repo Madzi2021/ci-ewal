@@ -69,6 +69,7 @@ body {
   text-align: center;
   line-height: 50px;
   transform: translateX(-50%);
+  transition: all 0.5s ease;
 }
 
 .menu-samping #btn:hover {
@@ -94,7 +95,8 @@ body {
   line-height: 50px;
 }
 
-.menu-samping ul li .tooltip {
+.menu-samping ul li .tooltip,
+.menu-samping .profile-content .tooltip {
   position: absolute;
   left: 127px;
   top: 0;
@@ -103,6 +105,7 @@ body {
   height: 35px;
   width: 122px;
   background: #fff;
+  color: #11101d;
   line-height: 35px;
   text-align: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -112,10 +115,17 @@ body {
   display: block;
 }
 
-.menu-samping.active ul li .tooltip {
+.menu-samping .profile-content .tooltip {
+  left: 147px;
+}
+
+.menu-samping.active ul li .tooltip,
+.menu-samping.active .profile-content .tooltip {
   display: none;
 }
-.menu-samping ul li:hover .tooltip {
+
+.menu-samping ul li:hover .tooltip,
+.menu-samping .exit:hover .tooltip {
   transition: all 0.5s ease;
   opacity: 1;
   top: 50%;
@@ -226,6 +236,7 @@ body {
   width: calc(100% - 93px);
   left: 93px;
   transition: all 0.5s ease;
+  padding-right: 10px;
 }
 
 .menu-samping.active ~ .home-content {

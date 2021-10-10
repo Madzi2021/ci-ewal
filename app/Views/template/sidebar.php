@@ -10,7 +10,7 @@
     </div>
     <ul class="daftar-menu">
         <li>
-            <a href="#">
+            <a href="dashboard">
                 <span class="material-icons">dashboard</span>
                 <span class="links-name">
                     Dashboard
@@ -80,7 +80,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/pengaturan">
                 <span class="material-icons">settings</span>
                 <span class="links-name">
                     Pengaturan
@@ -90,7 +90,7 @@
         </li>
 
         <li>
-            <a href="#">
+            <a href="/profil">
                 <span class="material-icons">person</span>
                 <span class="links-name">
                     Ubah Profil
@@ -109,7 +109,10 @@
                     <div class="job">IT Staff</div>
                 </div>
             </div>
-            <span class="material-icons" id="log-out">exit_to_app</span>
+            <div class="exit">
+                <span class="material-icons" id="log-out">exit_to_app</span>
+                <span class="tooltip">Logout</span>
+            </div>
         </div>
 
     </div>
