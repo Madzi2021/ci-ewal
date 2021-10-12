@@ -22,10 +22,11 @@ body {
   top: 0;
   left: 0;
   height: 100%;
-  width: 83px;
+  width: 78px;
   background: #11101d;
   padding: 6px 14px;
   transition: all 0.5s ease;
+  z-index: 10;
 }
 
 .menu-samping.active {
@@ -90,7 +91,7 @@ body {
   position: relative;
   height: 50px;
   width: 100%;
-  margin: 0 5px;
+  /* margin: 0 5px; */
   list-style: none;
   line-height: 50px;
 }
@@ -104,8 +105,8 @@ body {
   border-radius: 5px;
   height: 35px;
   width: 122px;
-  background: #fff;
-  color: #11101d;
+  background: #000;
+  color: #fff;
   line-height: 35px;
   text-align: center;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
@@ -233,13 +234,53 @@ body {
 .home-content {
   position: absolute;
   height: 100%;
-  width: calc(100% - 93px);
-  left: 93px;
+  width: calc(100% - 88px);
+  left: 88px;
   transition: all 0.5s ease;
   padding-right: 10px;
+}
+
+.home-content #tambah {
+  margin-right: 10px;
 }
 
 .menu-samping.active ~ .home-content {
   width: calc(100% - 300px);
   left: 300px;
+}
+
+.home-content .judul {
+  margin: 20px 0;
+}
+
+.home-content .judul .name {
+  font-size: xx-large;
+}
+
+.home-content ul {
+  font-size: small;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+}
+
+.home-content ul li {
+  margin-right: 10px;
+}
+
+.home-content ul li a {
+  text-decoration: none;
+  color: #11101d;
+}
+
+td a,
+th a {
+  text-decoration: none;
+  color: #11101d;
+}
+
+td a:hover,
+th a:hover {
+  color: #11101d;
 }
