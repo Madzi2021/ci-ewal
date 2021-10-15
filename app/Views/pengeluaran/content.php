@@ -41,23 +41,56 @@
         <a href="#" class="btn btn-dark col-2" id="tambah">Tambah Data</a>
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
         <thead class="table-dark">
             <tr>
-                <th>Tanggal</th>
-                <th>Jumlah</th>
-                <th></th>
+                <th class="text-center">Tanggal</th>
+                <th class="text-center">Jumlah</th>
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < 10; $i++) : ?>
+            <?php for ($i = 0; $i < 5; $i++) : ?>
                 <tr>
-                    <td>20 Oktober 2020</td>
-                    <td class="text-right">149.000</td>
-                    <td><a href="#"><span class="material-icons">
-                                delete
-                            </span></a></td>
+                    <td><a href="#" id="trans">20 Oktober 2020</a></td>
+                    <td class="text-end">149.000</td>
                 </tr>
+                <?php if ($i == 1) : ?>
+                    <tr class="detail-trans">
+                        <td colspan="2">
+                            <table class="table mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>Kategori</th>
+                                        <th>Keterangan</th>
+                                        <th>Nilai</th>
+                                        <th>Asset</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Makanan</td>
+                                        <td>Nasi Goreng</td>
+                                        <td>15.000</td>
+                                        <td>Kas</td>
+                                        <td class="text-end"><a href="#"><span class="material-icons">
+                                                    delete
+                                                </span></a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Kendaraan</td>
+                                        <td>Pertamax</td>
+                                        <td>25.000</td>
+                                        <td>Kas</td>
+                                        <td class="text-end"><a href="#"><span class="material-icons">
+                                                    delete
+                                                </span></a></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </td>
+                    </tr>
+                <?php endif; ?>
             <?php endfor; ?>
         </tbody>
     </table>

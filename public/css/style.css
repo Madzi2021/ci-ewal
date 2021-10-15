@@ -282,5 +282,12 @@ th a {
 
 td a:hover,
 th a:hover {
-  color: #11101d;
+  color: red;
+}
+
+table,
+.home-content .input-group,
+.home-content #tambah {
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+  margin-bottom: 5px;
 }
