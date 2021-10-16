@@ -6,7 +6,4 @@ btn.onclick = function() {
     sidebar.classList.toggle("active");
 }
 
-baris.onclick = function() {
-    alert("tes");
-}
 

@@ -8,4 +8,9 @@ class Pengaturan extends BaseController
     {
         echo view('pengaturan/content');
     }
+
+    public function detail()
+    {
+        echo view('pengaturan/detail');
+    }
 }

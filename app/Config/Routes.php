@@ -33,7 +33,9 @@ $routes->setAutoRoute(true);
 // route since we don't have to scan directories.
 $routes->get('/', 'Dashboard::index');
 $routes->get('/pendapatan', 'Pendapatan::index');
+$routes->get('/pendapatan/detail', 'Pendapatan::detail');
 $routes->get('/pengeluaran', 'Pengeluaran::index');
+$routes->get('/pengeluaran/detail', 'Pengeluaran::detail');
 $routes->get('/transfer', 'Transfer::index');
 $routes->get('/asset', 'Asset::index');
 $routes->get('/hutang', 'Hutang::index');

@@ -8,4 +8,9 @@ class Pengeluaran extends BaseController
     {
         echo view('pengeluaran/content');
     }
+
+    public function detail()
+    {
+        echo view('pengeluaran/detail');
+    }
 }

@@ -291,3 +291,31 @@ table,
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
   margin-bottom: 5px;
 }
+
+.home-content .paging a {
+  border-top: solid 1px #adb5bd;
+  border-bottom: solid 1px #adb5bd;
+  padding: 10px;
+  min-width: 50px;
+  text-decoration: none;
+  text-align: center;
+  color: #11101d;
+}
+
+.br {
+  border-right: solid 1px #adb5bd;
+}
+
+.bl {
+  border-left: solid 1px #adb5bd;
+}
+
+.home-content .paging a:hover {
+  background: #11101d;
+  color: #fff;
+}
+
+.paging a .aktif {
+  background: #11101d;
+  color: #fff;
+}
