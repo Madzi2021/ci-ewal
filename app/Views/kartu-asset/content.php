@@ -55,5 +55,17 @@
             <?php endfor; ?>
         </tbody>
     </table>
+
+    <div class="row">
+        <div class="col">
+            <div class="d-flex flex-row-reverse paging">
+                <a href="#" class="br">Next</a>
+                <a href="#" class="br">3</a>
+                <a href="#" class="br">2</a>
+                <a href="#" class="br">1</a>
+                <a href="#" class="bl br">Previous</a>
+            </div>
+        </div>
+    </div>
 </div>
 <?= $this->endSection(); ?>
