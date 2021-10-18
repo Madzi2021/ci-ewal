@@ -39,8 +39,8 @@
             </div>
         </div>
         <div class="col-6 d-flex flex-row-reverse">
-            <a href="#" class="btn btn-dark" id="tambah">Bayar Hutang</a>
-            <a href="#" class="btn btn-dark" id="tambah">Tambah Hutang</a>
+            <a href="#" class="btn btn-dark" id="tambah" data-bs-toggle="modal" data-bs-target="#bayar-hutang">Bayar Hutang</a>
+            <a href="#" class="btn btn-dark" id="tambah" data-bs-toggle="modal" data-bs-target="#tambah-hutang">Tambah Hutang</a>
         </div>
     </div>
 
@@ -69,6 +69,88 @@
                 <a href="#" class="br">2</a>
                 <a href="#" class="br">1</a>
                 <a href="#" class="bl br">Previous</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Tambah Hutang -->
+<div class="modal fade" id="tambah-hutang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Tambah Hutang</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="asset" class="form-label">Pilih Hutang</label>
+                    <select class="form-select" aria-label="Default select example" id="hutang">
+                        <option selected>Open this select hutang</option>
+                        <option value="1">KPR</option>
+                        <option value="2">Kredit Mobil</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="asset" class="form-label">Pilih Asset</label>
+                    <select class="form-select" aria-label="Default select example" id="asset">
+                        <option selected>Open this select asset</option>
+                        <option value="1">Kas</option>
+                        <option value="2">Bank</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nilai" class="form-label">Masukkan Nilai</label>
+                    <input type="number" class="form-control" id="nilai">
+                </div>
+                <div class="mb-3">
+                    <label for="keterangan" class="form-label">Keterangan</label>
+                    <textarea class="form-control" id="keterangan" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark">Simpan</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Bayar Hutang -->
+<div class="modal fade" id="bayar-hutang" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Bayar Hutang</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="mb-3">
+                    <label for="asset" class="form-label">Pilih Hutang</label>
+                    <select class="form-select" aria-label="Default select example" id="hutang">
+                        <option selected>Open this select hutang</option>
+                        <option value="1">KPR</option>
+                        <option value="2">Kredit Mobil</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="asset" class="form-label">Bayar Menggunakan</label>
+                    <select class="form-select" aria-label="Default select example" id="asset">
+                        <option selected>Open this select asset</option>
+                        <option value="1">Kas</option>
+                        <option value="2">Bank</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="nilai" class="form-label">Masukkan Nilai</label>
+                    <input type="number" class="form-control" id="nilai">
+                </div>
+                <div class="mb-3">
+                    <label for="keterangan" class="form-label">Keterangan</label>
+                    <textarea class="form-control" id="keterangan" rows="3"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-dark">Simpan</button>
             </div>
         </div>
     </div>

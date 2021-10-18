@@ -9,7 +9,7 @@
         </ul>
     </div>
 
-    <div class="row mb-2 justify-content-between ">
+    <div class="row mb-2 ">
         <div class="col-4">
             <div class="input-group">
                 <span class="input-group-text">Periode</span>
@@ -36,7 +36,16 @@
                 </select>
             </div>
         </div>
-        <a href="#" class="btn btn-dark col-2" id="tambah">Tambah Data</a>
+
+        <div class="col-3">
+            <div class="input-group">
+                <span class="input-group-text">Asset / Hutang</span>
+                <select class="form-select" aria-label="Default select example">
+                    <option selected>Kas</option>
+                    <option value="1">Bank</option>
+                </select>
+            </div>
+        </div>
     </div>
 
     <table class="table table-striped table-bordered">

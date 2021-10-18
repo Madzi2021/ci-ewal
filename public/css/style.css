@@ -319,3 +319,14 @@ table,
   background: #11101d;
   color: #fff;
 }
+
+.modal-body .baru {
+  height: 74px;
+  /* background: red; */
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+
+.modal-body .baru.aktif {
+  height: 128px;
+}
