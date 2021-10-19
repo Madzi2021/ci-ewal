@@ -78,37 +78,41 @@
 <div class="modal fade" id="tambah-asset" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Tambah Asset</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3 baru" id="div-baru">
-                    <label for="asset" class="form-label">Pilih Asset</label>
+            <form action="/asset/simpan" method="POST">
+                <?php echo csrf_field(); ?>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Tambah Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3 baru" id="div-baru">
+                        <label for="asset" class="form-label">Pilih Asset</label>
 
-                    <div class="input-group mb-3">
-                        <select class="form-select" aria-label="Default select example" id="asset">
-                            <option selected>Open this select asset</option>
-                            <option value="1">Kas</option>
-                            <option value="2">Bank</option>
-                        </select>
-                        <a href="#" class="btn btn-dark" id="tombol-asset-baru">+</a>
-                        <!-- <button class="btn btn-dark" type="button" id="tombol-asset-baru">+</button> -->
+                        <div class="input-group mb-3">
+                            <select class="form-select" aria-label="Default select example" id="asset" name="asset">
+                                <option selected>Open this select asset</option>
+                                <?php foreach ($asset as $key) : ?>
+                                    <option value="<?= $key['kodeasset']; ?>"><?= $key['namaasset']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <a href="#" class="btn btn-dark" id="tombol-asset-baru">+</a>
+                            <!-- <button class="btn btn-dark" type="button" id="tombol-asset-baru">+</button> -->
+                        </div>
+                        <input type="text" class="form-control" id="asset-baru" name="asset-baru">
                     </div>
-                    <input type="text" class="form-control" id="asset-baru">
+                    <div class="mb-3">
+                        <label for="nilai" class="form-label">Masukkan Nilai</label>
+                        <input type="number" class="form-control" id="nilai" name="nilai">
+                    </div>
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <textarea class="form-control" id="keterangan" rows="3" name="keterangan"></textarea>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="nilai" class="form-label">Masukkan Nilai</label>
-                    <input type="number" class="form-control" id="nilai">
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-dark">Simpan</button>
                 </div>
-                <div class="mb-3">
-                    <label for="keterangan" class="form-label">Keterangan</label>
-                    <textarea class="form-control" id="keterangan" rows="3"></textarea>
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark">Simpan</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

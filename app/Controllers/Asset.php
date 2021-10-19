@@ -22,4 +22,17 @@ class Asset extends BaseController
 
         return view('asset/content', $data);
     }
+
+    public function simpan()
+    {
+        // dd($this->request->getVar());
+        $slug = url_title($this->request->getVar('asset-baru'), '-', true);
+        $this->assetModel->save([
+            'namaasset' => $this->request->getVar('asset-baru'),
+            'slug' => $slug,
+            'nilai' => 0
+        ]);
+
+        return redirect()->to('/asset');
+    }
 }

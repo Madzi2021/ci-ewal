@@ -13,4 +13,6 @@ class AssetModel extends Model
     protected $createdField  = 'dibuat';
     protected $updatedField  = 'diupdate';
     protected $deletedField  = 'dihapus';
+
+    protected $allowedFields = ['namaasset', 'slug', 'nilai'];
 }
