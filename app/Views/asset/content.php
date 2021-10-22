@@ -4,39 +4,24 @@
 <div class="home-content">
     <div class="judul">
         <label class="name">Asset</label>
-        <ul>
+        <!-- <ul>
             <li id="period-link"><a href="#">Asset</a></li>
             <li>></li>
             <li id="period-link"><a href="#">Detail Asset</a></li>
-        </ul>
+        </ul> -->
     </div>
+
+    <?php if (isset($validation)) : ?>
+        <ul>
+            <?php foreach ($validation as $val) : ?>
+                <li><?= $val; ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
 
     <div class="row mb-2 justify-content-between ">
         <div class="col-4">
-            <div class="input-group">
-                <span class="input-group-text">Periode</span>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Bulan</option>
-                    <option value="1">Januari</option>
-                    <option value="2">Februari</option>
-                    <option value="3">Maret</option>
-                    <option value="4">April</option>
-                    <option value="5">Mei</option>
-                    <option value="6">Juni</option>
-                    <option value="7">Juli</option>
-                    <option value="8">Agustus</option>
-                    <option value="9">September</option>
-                    <option value="10">Oktober</option>
-                    <option value="11">November</option>
-                    <option value="12">Desember</option>
-                </select>
-                <select class="form-select" aria-label="Default select example">
-                    <option selected>Tahun</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
+
         </div>
         <div class="col-6 d-flex flex-row-reverse">
             <a href="#" class="btn btn-dark" id="tambah" data-bs-toggle="modal" data-bs-target="#kurangi-asset">Kurangi Asset</a>
@@ -54,8 +39,8 @@
         <tbody>
             <?php foreach ($asset as $key) : ?>
                 <tr>
-                    <td><a href="#" id="trans"><?php echo $key['namaasset'] ?></a></td>
-                    <td class="text-end"><?php echo $key['nilai'] ?></td>
+                    <td><a href="#" id="trans"><?php echo $key['namaakun'] ?></a></td>
+                    <td class="text-end"><?php echo number_format($key['nilai'], 2); ?></td>
                 </tr>
             <?php endforeach; ?>
         </tbody>
@@ -78,7 +63,7 @@
 <div class="modal fade" id="tambah-asset" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="/asset/simpan" method="POST">
+            <form action="/asset/tambah" method="POST">
                 <?php echo csrf_field(); ?>
                 <div class="modal-header">
                     <h5 class="modal-title" id="staticBackdropLabel">Tambah Asset</h5>
@@ -90,9 +75,8 @@
 
                         <div class="input-group mb-3">
                             <select class="form-select" aria-label="Default select example" id="asset" name="asset">
-                                <option selected>Open this select asset</option>
                                 <?php foreach ($asset as $key) : ?>
-                                    <option value="<?= $key['kodeasset']; ?>"><?= $key['namaasset']; ?></option>
+                                    <option value="<?= $key['namaakun']; ?>"><?= $key['namaakun']; ?></option>
                                 <?php endforeach; ?>
                             </select>
                             <a href="#" class="btn btn-dark" id="tombol-asset-baru">+</a>
@@ -102,7 +86,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="nilai" class="form-label">Masukkan Nilai</label>
-                        <input type="number" class="form-control" id="nilai" name="nilai">
+                        <input type="number" class="form-control" id="nilai" name="nilai" required>
                     </div>
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
@@ -121,31 +105,33 @@
 <div class="modal fade" id="kurangi-asset" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="staticBackdropLabel">Kurangi Asset</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="asset" class="form-label">Pilih Asset</label>
-                    <select class="form-select" aria-label="Default select example" id="asset">
-                        <option selected>Open this select asset</option>
-                        <option value="1">Kas</option>
-                        <option value="2">Bank</option>
-                    </select>
+            <form action="/asset/kurangi" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Kurangi Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <div class="mb-3">
-                    <label for="nilai" class="form-label">Masukkan Nilai</label>
-                    <input type="number" class="form-control" id="nilai">
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="asset" class="form-label">Pilih Asset</label>
+                        <select class="form-select" aria-label="Default select example" id="asset" name="asset">
+                            <?php foreach ($asset as $key) : ?>
+                                <option value="<?= $key['namaakun']; ?>"><?= $key['namaakun']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nilai" class="form-label">Masukkan Nilai</label>
+                        <input type="number" class="form-control" id="nilai" name="nilai" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <textarea class="form-control" id="keterangan" rows="3" name="keterangan"></textarea>
+                    </div>
                 </div>
-                <div class="mb-3">
-                    <label for="keterangan" class="form-label">Keterangan</label>
-                    <textarea class="form-control" id="keterangan" rows="3"></textarea>
+                <div class="modal-footer">
+                    <button type="sumbit" class="btn btn-dark">Simpan</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-dark">Simpan</button>
-            </div>
+            </form>
         </div>
     </div>
 </div>

@@ -38,6 +38,7 @@ $routes->get('/pengeluaran', 'Pengeluaran::index');
 $routes->get('/pengeluaran/detail', 'Pengeluaran::detail');
 $routes->get('/transfer', 'Transfer::index');
 $routes->get('/asset', 'Asset::index');
+$routes->get('/asset/error', 'Asset::error');
 $routes->get('/hutang', 'Hutang::index');
 $routes->get('/kartuasset', 'KartuAsset::index');
 $routes->get('/dashboard', 'Dashboard::index');
