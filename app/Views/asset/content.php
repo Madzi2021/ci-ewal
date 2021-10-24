@@ -12,11 +12,12 @@
     </div>
 
     <?php if (isset($validation)) : ?>
-        <ul>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
             <?php foreach ($validation as $val) : ?>
-                <li><?= $val; ?></li>
+                <?= $val; ?>
             <?php endforeach; ?>
-        </ul>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
     <?php endif; ?>
 
     <div class="row mb-2 justify-content-between ">
@@ -39,7 +40,7 @@
         <tbody>
             <?php foreach ($asset as $key) : ?>
                 <tr>
-                    <td><a href="#" id="trans"><?php echo $key['namaakun'] ?></a></td>
+                    <td><a href="#" class="akun" data-bs-toggle="modal" data-bs-target="#ubah-asset" data-id="<?php echo $key['kodeakun'] ?>" data-nilai="<?php echo $key['nilai'] ?>" data-nama="<?php echo $key['namaakun'] ?>"><?php echo $key['namaakun'] ?></a></td>
                     <td class="text-end"><?php echo number_format($key['nilai'], 2); ?></td>
                 </tr>
             <?php endforeach; ?>
@@ -74,7 +75,7 @@
                         <label for="asset" class="form-label">Pilih Asset</label>
 
                         <div class="input-group mb-3">
-                            <select class="form-select" aria-label="Default select example" id="asset" name="asset">
+                            <select class="form-select" aria-label="Default select example" id="tambah-akun" name="asset">
                                 <?php foreach ($asset as $key) : ?>
                                     <option value="<?= $key['namaakun']; ?>"><?= $key['namaakun']; ?></option>
                                 <?php endforeach; ?>
@@ -86,11 +87,11 @@
                     </div>
                     <div class="mb-3">
                         <label for="nilai" class="form-label">Masukkan Nilai</label>
-                        <input type="number" class="form-control" id="nilai" name="nilai" required>
+                        <input type="number" class="form-control" id="tambah-nilai" name="nilai" required>
                     </div>
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
-                        <textarea class="form-control" id="keterangan" rows="3" name="keterangan"></textarea>
+                        <textarea class="form-control" id="tambah-keterangan" rows="3" name="keterangan"></textarea>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -113,7 +114,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="asset" class="form-label">Pilih Asset</label>
-                        <select class="form-select" aria-label="Default select example" id="asset" name="asset">
+                        <select class="form-select" aria-label="Default select example" id="kurangi-asset" name="asset">
                             <?php foreach ($asset as $key) : ?>
                                 <option value="<?= $key['namaakun']; ?>"><?= $key['namaakun']; ?></option>
                             <?php endforeach; ?>
@@ -121,11 +122,39 @@
                     </div>
                     <div class="mb-3">
                         <label for="nilai" class="form-label">Masukkan Nilai</label>
-                        <input type="number" class="form-control" id="nilai" name="nilai" required>
+                        <input type="number" class="form-control" id="-kurangi-nilai" name="nilai" required>
                     </div>
                     <div class="mb-3">
                         <label for="keterangan" class="form-label">Keterangan</label>
-                        <textarea class="form-control" id="keterangan" rows="3" name="keterangan"></textarea>
+                        <textarea class="form-control" id="kurangi-keterangan" rows="3" name="keterangan"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="sumbit" class="btn btn-dark">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Edit Asset -->
+<div class="modal fade" id="ubah-asset" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/asset/ubah" method="POST">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Ubah Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="namaakun" class="form-label">Nama Asset</label>
+                        <input type="text" class="form-control" id="ubah-nama-akun" name="namaakun" required>
+                        <input type="hidden" class="form-control" id="ubah-kode-akun" name="kodeakun" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="nilai" class="form-label">Nilai</label>
+                        <input type="text" class="form-control" id="ubah-nilai" name="nilai" required disabled>
                     </div>
                 </div>
                 <div class="modal-footer">

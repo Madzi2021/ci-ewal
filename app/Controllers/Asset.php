@@ -28,13 +28,17 @@ class Asset extends BaseController
 
     public function tambah()
     {
-        // dd($this->request->getVar());
         if (!$this->validate([
-            'asset-baru' => 'is_unique[akun.namaakun]'
+            'asset-baru' => [
+                'rules' => 'is_unique[akun.namaakun]',
+                'errors' => [
+                    'is_unique' => 'Nama Asset sudah ada di-database'
+                ]
+            ]
         ])) {
             $validation = \Config\Services::validation();
 
-            $asset = $this->assetModel->findAll();
+            $asset = $this->assetModel->where('tipeakun', 1)->findAll();
 
             $data = [
                 'asset' => $asset,
@@ -45,7 +49,6 @@ class Asset extends BaseController
         }
 
         $namaAkun = $this->request->getVar('asset-baru');
-        // dd($namaAkun);
 
         if ($namaAkun != "") {
             $slug = url_title($this->request->getVar('asset-baru'), '-', true);
@@ -88,24 +91,7 @@ class Asset extends BaseController
 
     public function kurangi()
     {
-        // dd($this->request->getVar());
-        if (!$this->validate([
-            'asset-baru' => 'is_unique[akun.namaakun]'
-        ])) {
-            $validation = \Config\Services::validation();
-
-            $asset = $this->assetModel->findAll();
-
-            $data = [
-                'asset' => $asset,
-                'validation' => $validation->getErrors()
-            ];
-
-            return view('asset/content', $data);
-        }
-
         $namaAkun = $this->request->getVar('asset');
-        // dd($namaAkun);
 
         $curAsset = $this->assetModel->where('namaakun', $namaAkun)->first();
         $equity = $this->assetModel->where('slug', 'equity')->first();
@@ -127,6 +113,39 @@ class Asset extends BaseController
         $this->assetModel->save([
             'kodeakun' => $equity['kodeakun'],
             'nilai' => $updateEquity
+        ]);
+
+        return redirect()->to('/asset');
+    }
+
+    public function ubah()
+    {
+        if (!$this->validate([
+            'namaakun' => [
+                'rules' => 'is_unique[akun.namaakun]',
+                'errors' => [
+                    'is_unique' => 'Nama Asset sudah ada di-database'
+                ]
+            ]
+        ])) {
+            $validation = \Config\Services::validation();
+
+            $asset = $this->assetModel->where('tipeakun', 1)->findAll();
+
+            $data = [
+                'asset' => $asset,
+                'validation' => $validation->getErrors()
+            ];
+
+            return view('asset/content', $data);
+        }
+
+        // dd($this->request->getVar());
+        $slug = url_title($this->request->getVar('namaakun'), '-', true);
+        $this->assetModel->save([
+            'kodeakun' => $this->request->getVar('kodeakun'),
+            'namaakun' => $this->request->getVar('namaakun'),
+            'slug' => $slug
         ]);
 
         return redirect()->to('/asset');
