@@ -11,6 +11,15 @@
         </ul> -->
     </div>
 
+    <?php if (isset($validation)) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php foreach ($validation as $val) : ?>
+                <?= $val; ?>
+            <?php endforeach; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
     <div class="row mb-2 justify-content-between ">
         <div class="col-4">
             <!-- <div class="input-group">

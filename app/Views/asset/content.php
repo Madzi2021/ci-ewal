@@ -71,6 +71,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tanggal-tambah" class="form-label">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal-tambah" name="tanggal" required>
+                    </div>
                     <div class="mb-3 baru" id="div-baru">
                         <label for="asset" class="form-label">Pilih Asset</label>
 
@@ -112,6 +116,10 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tanggal-kurangi" class="form-label">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal-kurangi" name="tanggal" required>
+                    </div>
                     <div class="mb-3">
                         <label for="asset" class="form-label">Pilih Asset</label>
                         <select class="form-select" aria-label="Default select example" id="kurangi-asset" name="asset">

@@ -45,9 +45,10 @@ class Hutang extends BaseController
         ])) {
             $validation = \Config\Services::validation();
 
-            $asset = $this->assetModel->where('tipeakun', 2)->findAll();
-
+            $hutang = $this->assetModel->where('tipeakun', 2)->findAll();
+            $asset = $this->assetModel->where('tipeakun', 1)->findAll();
             $data = [
+                'hutang' => $hutang,
                 'asset' => $asset,
                 'validation' => $validation->getErrors()
             ];
@@ -144,20 +145,21 @@ class Hutang extends BaseController
             'namaakun' => [
                 'rules' => 'is_unique[akun.namaakun]',
                 'errors' => [
-                    'is_unique' => 'Nama Asset sudah ada di-database'
+                    'is_unique' => 'Nama Hutang sudah ada di-database'
                 ]
             ]
         ])) {
             $validation = \Config\Services::validation();
 
+            $hutang = $this->assetModel->where('tipeakun', 2)->findAll();
             $asset = $this->assetModel->where('tipeakun', 1)->findAll();
-
             $data = [
+                'hutang' => $hutang,
                 'asset' => $asset,
                 'validation' => $validation->getErrors()
             ];
 
-            return view('asset/content', $data);
+            return view('hutang/content', $data);
         }
 
         // dd($this->request->getVar());

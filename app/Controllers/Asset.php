@@ -65,6 +65,7 @@ class Asset extends BaseController
         $curAsset = $this->assetModel->where('namaakun', $namaAkun)->first();
         $equity = $this->assetModel->where('slug', 'equity')->first();
         $this->transaksiModel->save([
+            'tanggal' => $this->request->getVar('tanggal'),
             'nilai' => $this->request->getVar('nilai'),
             'keterangan' => $this->request->getVar('keterangan'),
             'akundebet' => $curAsset['kodeakun'],
@@ -96,6 +97,7 @@ class Asset extends BaseController
         $curAsset = $this->assetModel->where('namaakun', $namaAkun)->first();
         $equity = $this->assetModel->where('slug', 'equity')->first();
         $this->transaksiModel->save([
+            'tanggal' => $this->request->getVar('tanggal'),
             'nilai' => $this->request->getVar('nilai'),
             'keterangan' => $this->request->getVar('keterangan'),
             'akunkredit' => $curAsset['kodeakun'],

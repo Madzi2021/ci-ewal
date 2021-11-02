@@ -330,3 +330,9 @@ table,
 .modal-body .baru.aktif {
   height: 128px;
 }
+
+.rata-kanan {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}

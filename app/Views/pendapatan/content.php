@@ -11,7 +11,16 @@
         </ul>
     </div>
 
-    <div class="row mb-2 justify-content-between ">
+    <?php if (isset($validation)) : ?>
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <?php foreach ($validation as $val) : ?>
+                <?= $val; ?>
+            <?php endforeach; ?>
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+    <?php endif; ?>
+
+    <div class="row mb-2">
         <div class="col-4">
             <div class="input-group">
                 <span class="input-group-text">Periode</span>
@@ -38,7 +47,18 @@
                 </select>
             </div>
         </div>
-        <a href="#" class="btn btn-dark col-2" id="tambah">Tambah Data</a>
+
+        <div class="col-1">
+            <div class="input-group">
+                <button type="submit" class="btn btn-dark">Terapkan</button>
+            </div>
+        </div>
+
+        <div class="col-7">
+            <div class="rata-kanan">
+                <a href="#" class="btn btn-dark" id="tambah" data-bs-toggle="modal" data-bs-target="#tambah-pendapatan">Tambah Data</a>
+            </div>
+        </div>
     </div>
 
     <table class="table table-striped table-bordered">
@@ -49,12 +69,12 @@
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < 10; $i++) : ?>
+            <?php foreach ($mutasi as $key) : ?>
                 <tr>
-                    <td><a href="/pendapatan/detail" id="trans">20 Oktober 2020</a></td>
-                    <td class="text-end">149.000</td>
+                    <td><a href="/pendapatan/detail/<?= $key['tanggal']; ?>" id="trans"><?= $key['tanggal']; ?></a></td>
+                    <td class="text-end"><?= number_format($key['nilai'], 2); ?></td>
                 </tr>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 
@@ -70,4 +90,58 @@
         </div>
     </div>
 </div>
+
+<!-- Modal Tambah Pendapatan -->
+<div class="modal fade" id="tambah-pendapatan" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form action="/pendapatan/tambah" method="POST">
+                <?php echo csrf_field(); ?>
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Tambah Pendapatan</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="tanggal-tambah" class="form-label">Tanggal</label>
+                        <input type="date" class="form-control" id="tanggal-tambah" name="tanggal" required>
+                    </div>
+                    <div class="mb-3 baru">
+                        <label for="pilih-asset" class="form-label">Masuk ke Asset</label>
+                        <select class="form-select" aria-label="Default select example" id="pilih-asset" name="asset" required>
+                            <?php foreach ($asset as $key) : ?>
+                                <option value="<?= $key['namaakun']; ?>"><?= $key['namaakun']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                    </div>
+                    <div class="mb-3 baru" id="div-baru">
+                        <label for="taambah-akun" class="form-label">Kategori Pendapatan</label>
+
+                        <div class="input-group mb-3">
+                            <select class="form-select" aria-label="Default select example" id="tambah-akun" name="kategori">
+                                <?php foreach ($pendapatan as $key) : ?>
+                                    <option value="<?= $key['namaakun']; ?>"><?= $key['namaakun']; ?></option>
+                                <?php endforeach; ?>
+                            </select>
+                            <a href="#" class="btn btn-dark" id="tombol-asset-baru">+</a>
+                        </div>
+                        <input type="text" class="form-control" id="asset-baru" name="asset-baru">
+                    </div>
+                    <div class="mb-3">
+                        <label for="nilai" class="form-label">Masukkan Nilai</label>
+                        <input type="number" class="form-control" id="tambah-nilai" name="nilai" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="keterangan" class="form-label">Keterangan</label>
+                        <textarea class="form-control" id="tambah-keterangan" rows="3" name="keterangan"></textarea>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-dark">Simpan</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
 <?= $this->endSection(); ?>

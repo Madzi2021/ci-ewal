@@ -5,42 +5,24 @@
     <div class="judul">
         <label class="name">Pendapatan</label>
         <ul>
-            <li id="period-link"><a href="#">Pendapatan Januari 2021</a></li>
+            <li id="period-link"><a href="#">Pendapatan <?= strftime("%e %B %Y", $tanggal); ?></a></li>
             <li>></li>
             <li id="period-link"><a href="#">Detail Pendapatan</a></li>
         </ul>
     </div>
 
     <div class="row mb-2 justify-content-between ">
-        <div class="col-4">
+        <div class="col-5">
             <div class="input-group">
                 <span class="input-group-text">Periode</span>
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Tanggal</option>
-                    <?php for ($i = 1; $i < 31; $i++) : ?>
-                        <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
-                    <?php endfor; ?>
+                    <option value="<?php echo strftime("%e", $tanggal); ?>"><?php echo strftime("%e", $tanggal); ?></option>
                 </select>
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Bulan</option>
-                    <option value="1">Januari</option>
-                    <option value="2">Februari</option>
-                    <option value="3">Maret</option>
-                    <option value="4">April</option>
-                    <option value="5">Mei</option>
-                    <option value="6">Juni</option>
-                    <option value="7">Juli</option>
-                    <option value="8">Agustus</option>
-                    <option value="9">September</option>
-                    <option value="10">Oktober</option>
-                    <option value="11">November</option>
-                    <option value="12">Desember</option>
+                    <option value="<?php echo strftime("%B", $tanggal); ?>"><?php echo strftime("%B", $tanggal); ?></option>
                 </select>
                 <select class="form-select" aria-label="Default select example">
-                    <option selected>Tahun</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                    <option value="<?php echo strftime("%Y", $tanggal); ?>"><?php echo strftime("%Y", $tanggal); ?></option>
                 </select>
             </div>
         </div>
@@ -52,22 +34,20 @@
             <tr>
                 <th class="text-center">Kategori</th>
                 <th class="text-center">Keterangan</th>
-                <th class="text-center">Asset</th>
                 <th class="text-center">Jumlah</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
-            <?php for ($i = 0; $i < 5; $i++) : ?>
+            <?php foreach ($mutasi as $key) : ?>
                 <tr>
-                    <td>Makanan</td>
-                    <td>Nasi Goreng</td>
-                    <td>Kas</td>
-                    <td class="text-end">15.000</td>
+                    <td><?= $key['akun']; ?></td>
+                    <td><?= $key['keterangan']; ?></td>
+                    <td class="text-end"><?= number_format($key['nilai'], 2); ?></td>
                     <td class="text-end"><a href="#"><span class="material-icons">delete</span></a></td>
                 </tr>
 
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </tbody>
     </table>
 
